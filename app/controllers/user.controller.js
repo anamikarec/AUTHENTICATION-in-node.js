@@ -37,7 +37,7 @@ const signin = async (req, res) => {
 
 const getAllUsers = async(req,res)=> {
     try{
-        const users = await User.find({}).lean().exec();
+        const users = await User.find({}).select('-password').lean().exec();
         return res.status(201).json({data:users});
     }
     catch(err){
